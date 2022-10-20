@@ -5,6 +5,8 @@ import { LoadingComponent } from './components/loading/loading/loading.component
 import { MapViewComponent } from './components/map-view/map-view/map-view.component';
 import { LogoAngularComponent } from './components/logo-angular/logo-angular/logo-angular.component';
 import { BtnMyLocationComponent } from './components/btn-Location/btn-my-location/btn-my-location.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { SearchResultsComponent } from './components/search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,8 @@ import { BtnMyLocationComponent } from './components/btn-Location/btn-my-locatio
     MapViewComponent,
     LogoAngularComponent,
     BtnMyLocationComponent,
+    SearchBarComponent,
+    SearchResultsComponent,
   ],
   imports: [CommonModule],
   exports: [MapPageComponent],
