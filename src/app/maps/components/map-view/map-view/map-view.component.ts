@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { PlacesService } from 'src/app/maps/services/places.service';
-import { Map } from 'mapbox-gl';
+import { Map, Popup, Marker } from 'mapbox-gl';
 
 @Component({
   selector: 'app-map-view',
@@ -9,7 +9,9 @@ import { Map } from 'mapbox-gl';
 })
 export class MapViewComponent implements AfterViewInit {
   @ViewChild('mapDiv') mapDivElement?: ElementRef;
+
   constructor(private placesService: PlacesService) {}
+
   ngAfterViewInit(): void {
     if (!this.placesService.useLocation) {
       throw Error('Error not user location ');
@@ -19,7 +21,13 @@ export class MapViewComponent implements AfterViewInit {
       style: 'mapbox://styles/mapbox/streets-v11', // style URL
       center: this.placesService.useLocation, // starting position [lng, lat]
       zoom: 14, // starting zoom
-      // display the map as a 3D globe
     });
+
+    const popup = new Popup().setHTML(`<h6>Iam here</h6>`);
+
+    const marker = new Marker({ color: 'red' })
+      .setLngLat(this.placesService.useLocation)
+      .setPopup(popup)
+      .addTo(map);
   }
 }
